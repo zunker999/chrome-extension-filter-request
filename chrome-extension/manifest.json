@@ -1,0 +1,61 @@
+{
+  // 插件名字
+  "name": "xk",
+  // 插件的版本
+  "version": "1.0",
+  // 插件支持的最低版本
+  "minimum_chrome_version": "10.0",
+  // 插件描述
+  "description": "get chrome request log",
+  // 清单文件的版本，这个必须写，需要用2，3不行
+  "manifest_version": 2,
+  // devtools页面入口，注意只能指向一个HTML文件，不能是JS文件
+  "devtools_page": "index.html",
+  // 权限申请
+  "permissions": [
+    "webRequest",
+    // web请求
+    "webRequestBlocking",
+    "notifications",
+    "activeTab",
+    // 阻塞式web请求
+    "storage",
+    // 插件本地存储
+    "http://*/*",
+    // 可以通过executeScript或者insertCSS访问的网站
+    "https://*/*"
+    // 可以通过executeScript或者insertCSS访问的网站
+  ],
+  // 会一直常驻的后台JS或后台页面
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    //persistent属性值设置为true,确保backgroundpage处于常开状态
+    "persistent": true
+  },
+  // 浏览器显示的插件logo
+  "icons": {
+    "16": "/popup/images/get_started16.png",
+    "32": "/popup/images/get_started32.png",
+    "48": "/popup/images/get_started48.png",
+    "128": "/popup/images/get_started128.png"
+  },
+  // 插件点击后显示的页面
+  "browser_action": {
+    "default_icon": "/popup/images/get_started128.png",
+    "default_title": "chrome插件"
+    //// 设置default_popup后browserAction.onClicked的chrome.tabs.create会不生效
+    // ,"default_popup": "/browser_action/index.html"
+  },
+  // 扩展管理页、权限警告和 favicon 上显示图像
+  "action": {
+    "default_popup": "/popup/popup.html",
+    "default_icon": {
+      "16": "/popup/images/get_started16.png",
+      "32": "/popup/images/get_started32.png",
+      "48": "/popup/images/get_started48.png",
+      "128": "/popup/images/get_started128.png"
+    }
+  }
+}
